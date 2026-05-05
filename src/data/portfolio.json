@@ -2,7 +2,7 @@
     "profile": {
         "name": "Muhammad Mahatir",
         "role": "Fullstack Developer",
-        "bio": "I’m a software engineer who loves turning complex problems into simple, digital tools. My journey started back in 2016 building desktop apps for accounting and city government reports, but my path eventually led me to the web. During my time at Ejen2u, I fell in love with the SaaS multi-tenant world—an expertise I’ve since poured into my own projects like Wishwash and Edeskel. Whether it's helping villages go digital or streamlining hospital management, I’m most at home when I’m bridging the gap between technical logic and real-world impact, building everything from robust databases to smooth interfaces with Laravel and Vue.",
+        "bio": "I’m a software engineer who loves turning complex problems into simple, digital tools. My journey started back in 2016 building desktop apps for accounting and government reporting, which eventually led me to the web. During my time at Ejen2u, I specialized in the SaaS multi-tenant architecture—an expertise I’ve since poured into my own projects like wishwash.id and Edeskel. Whether it's helping villages go digital or streamlining hospital management, I’m most at home when I’m bridging the gap between technology and real-world impact.",
         "socials": {
             "github": "https://github.com/malondai",
             "linkedin": "https://linkedin.com/in/muhammad-mahatir-b8a9251a4",
@@ -58,7 +58,15 @@
             "desc": [
                 "Develop a Web-Based Information System for Regional Public Service Agency Hospital on Kab. Konawe."
             ],
-            "tech": ["PHP", "Laravel", "PostgreSQL", "HTML", "JavaScript", "REST API", "BPJS Integration"]
+            "tech": [
+                "PHP",
+                "Laravel",
+                "PostgreSQL",
+                "HTML",
+                "JavaScript",
+                "REST API",
+                "BPJS Integration"
+            ]
         },
         {
             "year": "April 2018 — December 2018",
@@ -68,7 +76,13 @@
             "desc": [
                 "Develop Desktop Based Report Management Application for Sections Organisasi dan Tata Laksana Makassar city government."
             ],
-            "tech": ["Java", "Swing", "MySQL", "Jasper Reports", "Desktop Application"]
+            "tech": [
+                "Java",
+                "Swing",
+                "MySQL",
+                "Jasper Reports",
+                "Desktop Application"
+            ]
         },
         {
             "year": "2016 — 2020",
@@ -81,72 +95,147 @@
                 "Develop a Web-Based Computer Test Assist Application for 'UPT Penilaian Potensi dan Komptensi' BKD Sulsel",
                 "Develop Desktop-Based Accounting Information Systems for PT. Adiatma Group"
             ],
-            "tech": ["PHP", "CodeIgniter", "MySQL", "HTML", "JavaScript", "Java", "Swing"]
+            "tech": [
+                "PHP",
+                "CodeIgniter",
+                "MySQL",
+                "HTML",
+                "JavaScript",
+                "Java",
+                "Swing"
+            ]
         }
     ],
     "projects": [
         {
-          "title": "Wishwash.id",
-          "url": "https://app.wishwash.id",
-          "image": "/projects/wishwash.png",
-          "desc": "SaaS multi-tenant POS for laundry services with efficient database management.",
-          "tags": ["PHP", "Laravel", "Vue 3", "Inertia.js", "Tailwind", "PostgreSQL", "Redis", "HTML", "JavaScript"]
+            "title": "Wishwash.id",
+            "url": "https://app.wishwash.id",
+            "image": "/projects/wishwash.png",
+            "desc": "A robust multi-tenant SaaS Point of Sale (POS) specifically built for laundry businesses. It streamlines operations with real-time order tracking, automated customer notifications, and comprehensive financial reporting. The system uses a highly scalable database architecture to handle multiple business branches seamlessly within a single integrated platform.",
+            "tags": [
+                "PHP",
+                "Laravel",
+                "Vue 3",
+                "Inertia.js",
+                "Tailwind",
+                "PostgreSQL",
+                "Redis",
+                "HTML",
+                "JavaScript"
+            ]
         },
         {
-          "title": "Edeskel.id",
-          "url": "https://edeskel.id",
-          "image": "/projects/edeskel.png",
-          "desc": "Administrative correspondence management application for villages.",
-          "tags": ["PHP", "Laravel", "Vue 3", "Inertia.js", "Tailwind", "MySQL", "HTML", "JavaScript"]
-        },        
-        {
-          "title": "F8 Makassar.com",
-          "url": "https://f8makassar.com/",
-          "image": "/projects/f8.png",
-          "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
-          "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
-        },        
-        {
-          "title": "SIMRS BLUD Konawe",
-          "url": "#",
-          "image": "/projects/simrs.png",
-          "desc": "Administrative correspondence management application for villages.",
-          "tags": ["PHP", "Laravel", "Bootstrap", "PostgreSQL", "HTML", "JavaScript", "BPJS Integration"]
-        },        
-        {
-          "title": "Report Management Application",
-          "url": "#",
-          "image": "/projects/ortala.png",
-          "desc": "Report management application is a project from the organization and governance section of the Makassar city government. This application is used to facilitate the creation of several reports such as workload analysis reports, job analysis reports, job evaluation reports, job standard reports, competency standard reports, and making ID cards for all employees within the scope of the Makassar city government.",
-          "tags": ["Java", "Swing", "MySQL", "Jasper Reports", "Desktop Application"]
-        },    
-        {
-          "title": "Smart Desa Buhung Bundang",
-          "url": "#",
-          "image": "/projects/bbundang.png",
-          "desc": "Smart Desa Buhung Bundang is a project from PT Global Connection Indonesia to digitize data from the village government of Buhung Bundang, Bontotiro District, Bulukumba Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
-          "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
+            "title": "Edeskel.id",
+            "url": "https://edeskel.id",
+            "image": "/projects/edeskel.png",
+            "desc": "A dedicated multi-tenant SaaS platform designed to digitize village administration and correspondence. It empowers local governments by automating document generation, managing population data, and providing a centralized hub for village reports. Built to bridge the digital divide, it ensures secure and efficient data management for rural communities.",
+            "tags": [
+                "PHP",
+                "Laravel",
+                "Vue 3",
+                "Inertia.js",
+                "Tailwind",
+                "MySQL",
+                "HTML",
+                "JavaScript"
+            ]
         },
         {
-          "title": "Smart Desa Lebang Manai",
-          "url": "#",
-          "image": "/projects/lmanai.png",
-          "desc": "Smart Desa Lebang Manai is a project from PT Global Connection Indonesia to digitize data from the village government of Lebang Manai, Rumbia District, Jeneponto Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
-          "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
+            "title": "F8 Makassar.com",
+            "url": "https://f8makassar.com/",
+            "image": "/projects/f8.png",
+            "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
+            "tags": [
+                "PHP",
+                "CodeIgniter 3",
+                "Bootstrap",
+                "MySQL",
+                "HTML",
+                "JavaScript"
+            ]
         },
         {
-          "title": "Computer Assisted Test",
-          "url": "#",
-          "image": "/projects/cat.png",
-          "desc": "Computer Assisted Test is a project from PT Global Connection Indonesia for UPT. assessment, potential and competence of the regional civil service agency of South Sulawesi. This application used to perform official exams and diploma adjustments, transfer examinations, outsourcing selection examinations, etc. This project is a web-based application developed using CodeIgniter framework.",
-          "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
+            "title": "SIMRS BLUD Konawe",
+            "url": "#",
+            "image": "/projects/simrs.png",
+            "desc": "BLUD KONAWE Hospital Information System or SIMRS Blud Konawe is a enterprise software project from CV. Techno Daeng which is used by the Regional Public Service Agency Hospital, Konawe Regency, Southeast Sulawesi. with features such as digital medical records, integration with BPJS Health, patient data, hospital services, and others. This project is a web-based application built using the Laravel framework with a PostgreeSql database.",
+            "tags": [
+                "PHP",
+                "Laravel",
+                "Bootstrap",
+                "PostgreSQL",
+                "HTML",
+                "JavaScript",
+                "BPJS Integration"
+            ]
         },
         {
-          "title": "Accounting Information System",
-          "url": "#",
-          "image": "/projects/accounting.png",
-          "desc": "Accounting Information System is a project of PT Global Connection Indonesia for PT Alhikmah Trans. This application was developed to make recording financial reports faster and more efficient.",
-          "tags": ["Java", "Swing", "MySQL", "Jasper Reports", "Desktop Application"]
-        }    
+            "title": "Report Management Application",
+            "url": "#",
+            "image": "/projects/ortala.png",
+            "desc": "Report management application is a project from the organization and governance section of the Makassar city government. This application is used to facilitate the creation of several reports such as workload analysis reports, job analysis reports, job evaluation reports, job standard reports, competency standard reports, and making ID cards for all employees within the scope of the Makassar city government.",
+            "tags": [
+                "Java",
+                "Swing",
+                "MySQL",
+                "Jasper Reports",
+                "Desktop Application"
+            ]
+        },
+        {
+            "title": "Smart Desa Buhung Bundang",
+            "url": "#",
+            "image": "/projects/bbundang.png",
+            "desc": "Smart Desa Buhung Bundang is a project from PT Global Connection Indonesia to digitize data from the village government of Buhung Bundang, Bontotiro District, Bulukumba Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
+            "tags": [
+                "PHP",
+                "CodeIgniter 3",
+                "Bootstrap",
+                "MySQL",
+                "HTML",
+                "JavaScript"
+            ]
+        },
+        {
+            "title": "Smart Desa Lebang Manai",
+            "url": "#",
+            "image": "/projects/lmanai.png",
+            "desc": "Smart Desa Lebang Manai is a project from PT Global Connection Indonesia to digitize data from the village government of Lebang Manai, Rumbia District, Jeneponto Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
+            "tags": [
+                "PHP",
+                "CodeIgniter 3",
+                "Bootstrap",
+                "MySQL",
+                "HTML",
+                "JavaScript"
+            ]
+        },
+        {
+            "title": "Computer Assisted Test",
+            "url": "#",
+            "image": "/projects/cat.png",
+            "desc": "Computer Assisted Test is a project from PT Global Connection Indonesia for UPT. assessment, potential and competence of the regional civil service agency of South Sulawesi. This application used to perform official exams and diploma adjustments, transfer examinations, outsourcing selection examinations, etc. This project is a web-based application developed using CodeIgniter framework.",
+            "tags": [
+                "PHP",
+                "CodeIgniter 3",
+                "Bootstrap",
+                "MySQL",
+                "HTML",
+                "JavaScript"
+            ]
+        },
+        {
+            "title": "Accounting Information System",
+            "url": "#",
+            "image": "/projects/accounting.png",
+            "desc": "Accounting Information System is a project of PT Global Connection Indonesia for PT Alhikmah Trans. This application was developed to make recording financial reports faster and more efficient.",
+            "tags": [
+                "Java",
+                "Swing",
+                "MySQL",
+                "Jasper Reports",
+                "Desktop Application"
+            ]
+        }
     ]
 }
