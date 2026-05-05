@@ -1,0 +1,60 @@
+{
+    "profile": {
+        "name": "Muhammad Mahatir",
+        "role": "Fullstack Developer",
+        "bio": "Highly dedicated Software Engineer with extensive experience in developing web-based and desktop applications. Proven track record in designing database structures and implementing complex features for both government and private sectors. Proficient in modern frameworks and the full software development life cycle (SDLC) to deliver scalable and efficient solutions.",
+        "socials": {
+            "github": "https://github.com/malondai",
+            "linkedin": "https://linkedin.com/in/username",
+            "instagram": "https://instagram.com/username"
+        }
+    },
+    "experiences": [
+        {
+            "year": "2022 — 2026",
+            "role": "Full-stack Developer",
+            "company": "Ejen2u International Sdn. Bhd",
+            "url": "https://ejen2u.com/",
+            "desc": [
+                "Leverage Model-View-Controller (MVC) architecture to design and implement end-to-end features for SaaS applications.",
+                "Apply advanced problem-solving skills to identify system bottlenecks and deliver efficient technical solutions.",
+                "Collaborate across the full technology stack to improve user interface responsiveness and backend stability.",
+                "Developed and maintained robust server-side logic using PHP and the Laravel framework.",
+                "Ensured code reliability and software quality through automated testing using PHPUnit."
+            ],
+            "tech": [
+                "PHP",
+                "JavaScript",
+                "MySQL",
+                "PostgreSQL",
+                "Laravel",
+                "React.js",
+                "Vue.js",
+                "N8N"
+            ]
+        },
+        {
+            "year": "2021 — 2022",
+            "role": "Full-stack Developer",
+            "company": "PT. Aptana Citra Solusindo",
+            "url": "https://aptana.co.id/",
+            "desc": [
+                "Developed web-based application products for corporate clients.",
+                "Maintained and optimized existing systems to improve performance and user experience."
+            ],
+            "tech": ["PHP", "CodeIgniter", "MySQL"]
+        }
+    ],
+  "projects": [
+    {
+      "title": "wishwash.id",
+      "desc": "SaaS POS Multi-tenant untuk layanan laundry dengan manajemen database efisien.",
+      "tags": ["Vue 3", "Inertia.js", "Tailwind"]
+    },
+    {
+      "title": "Custom ERP Pilot",
+      "desc": "Eksperimen pengembangan sistem ERP menggunakan Java Spring Boot 3.",
+      "tags": ["Java", "Spring Boot", "Docker"]
+    }
+  ]
+}

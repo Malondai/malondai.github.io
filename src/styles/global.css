@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: night, light;
+}
+
+@theme {
+    --color-primary: #6366f1;
+    --color-secondary: #2dd4bf;
+}
+
+/* Custom Selection */
+::selection {
+    background: #6366f1;
+    color: white;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

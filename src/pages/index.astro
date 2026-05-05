@@ -1,11 +1,142 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import data from "../data/portfolio.json";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import "../styles/global.css";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const { profile, experiences, projects } = data;
 ---
 
 <Layout>
-	<Welcome />
+    <div
+        class="font-sans selection:bg-primary/30 relative"
+    >
+        <!-- Spotlight Overlay -->
+        <div
+            id="spotlight"
+            class="pointer-events-none fixed inset-0 z-30 transition duration-300 pointer-events-none"
+            style="background: radial-gradient(600px at 0px 0px, rgba(99, 102, 241, 0.15), transparent 80%);"
+        >
+        </div>
+
+        <!-- Aksen: Grainy Texture Overlay -->
+        <div
+            class="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('/noise.svg')]"
+        >
+        </div>
+
+        <div
+            class="max-w-screen-xl mx-auto px-6 py-12 lg:px-24 lg:py-0 relative z-10"
+        >
+            <div class="lg:flex lg:justify-between lg:gap-4">
+                <Header profile={profile} />
+
+                <!-- RIGHT COLUMN -->
+                <main id="content" class="lg:w-1/2 lg:py-24 space-y-16 animate-reveal-late group/list">
+                    <About bio={profile.bio} />
+                    <Experience experiences={experiences} />
+                    <section id="projects" class="scroll-mt-16 lg:scroll-mt-24">
+                        <Projects projects={projects} />
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intersection Observer & GSAP Animation Core -->
+    <script>
+        import { gsap } from "gsap";
+
+        // 1. Entrance Animations
+        const setupAnimations = () => {
+            gsap.from(".animate-reveal", {
+                y: 30,
+                opacity: 0,
+                duration: 1.2,
+                ease: "expo.out",
+            });
+
+            gsap.from(".animate-reveal-late", {
+                y: 50,
+                opacity: 0,
+                duration: 1.5,
+                delay: 0.3,
+                ease: "expo.out",
+            });
+        };
+
+        // 2. Navigation Highlighting
+        const setupNavHighlight = () => {
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            const options = {
+                root: null,
+                rootMargin: "0px 0px -80% 0px",
+                threshold: 0,
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute("id");
+                        navLinks.forEach((link) => {
+                            const indicator = link.querySelector(".nav-indicator");
+                            if (link.getAttribute("href") === `#${id}`) {
+                                link.classList.add("text-primary");
+                                indicator?.classList.add("w-16", "bg-primary");
+                                indicator?.classList.remove("w-8", "bg-slate-600");
+                            } else {
+                                link.classList.remove("text-primary");
+                                indicator?.classList.remove("w-16", "bg-primary");
+                                indicator?.classList.add("w-8", "bg-slate-600");
+                            }
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach((section) => observer.observe(section));
+            
+            // Handle edge case for top of page
+            window.addEventListener('scroll', () => {
+                if (window.scrollY < 50) {
+                    const aboutLink = document.querySelector('a[href="#about"]');
+                    const aboutIndicator = aboutLink?.querySelector(".nav-indicator");
+                    
+                    navLinks.forEach((link) => {
+                        const indicator = link.querySelector(".nav-indicator");
+                        if (link === aboutLink) {
+                            link.classList.add("text-primary");
+                            aboutIndicator?.classList.add("w-16", "bg-primary");
+                            aboutIndicator?.classList.remove("w-8", "bg-slate-600");
+                        } else {
+                            link.classList.remove("text-primary");
+                            indicator?.classList.remove("w-16", "bg-primary");
+                            indicator?.classList.add("w-8", "bg-slate-600");
+                        }
+                    });
+                }
+            });
+        };
+
+        // 3. Spotlight Effect
+        const setupSpotlight = () => {
+            const spotlight = document.getElementById("spotlight");
+            if (!spotlight) return;
+
+            window.addEventListener("mousemove", (e) => {
+                const { clientX, clientY } = e;
+                spotlight.style.background = `radial-gradient(600px at ${clientX}px ${clientY}px, rgba(99, 102, 241, 0.15), transparent 80%)`;
+            });
+        };
+
+        // Run on initial load
+        setupAnimations();
+        setupNavHighlight();
+        setupSpotlight();
+    </script>
 </Layout>
