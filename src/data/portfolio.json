@@ -1,6 +1,7 @@
 {
     "profile": {
         "name": "Muhammad Mahatir",
+        "avatar": "/athir.png",
         "role": "Fullstack Developer",
         "bio": "I’m a software engineer who loves turning complex problems into simple, digital tools. My journey started back in 2016 building desktop apps for accounting and government reporting, which eventually led me to the web. During my time at Ejen2u, I specialized in the SaaS multi-tenant architecture—an expertise I’ve since poured into my own projects like wishwash.id and Edeskel. Whether it's helping villages go digital or streamlining hospital management, I’m most at home when I’m bridging the gap between technology and real-world impact.",
         "socials": {
@@ -108,18 +109,15 @@
     ],
     "projects": [
         {
-            "title": "Wishwash.id",
-            "url": "https://app.wishwash.id",
-            "image": "/projects/wishwash.png",
-            "desc": "A robust multi-tenant SaaS Point of Sale (POS) specifically built for laundry businesses. It streamlines operations with real-time order tracking, automated customer notifications, and comprehensive financial reporting. The system uses a highly scalable database architecture to handle multiple business branches seamlessly within a single integrated platform.",
+            "title": "F8 Makassar.com",
+            "url": "https://f8makassar.com/",
+            "image": "/projects/f8.png",
+            "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
             "tags": [
                 "PHP",
-                "Laravel",
-                "Vue 3",
-                "Inertia.js",
-                "Tailwind",
-                "PostgreSQL",
-                "Redis",
+                "CodeIgniter 3",
+                "Bootstrap",
+                "MySQL",
                 "HTML",
                 "JavaScript"
             ]
@@ -141,15 +139,18 @@
             ]
         },
         {
-            "title": "F8 Makassar.com",
-            "url": "https://f8makassar.com/",
-            "image": "/projects/f8.png",
-            "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
+            "title": "Wishwash.id",
+            "url": "https://app.wishwash.id",
+            "image": "/projects/wishwash.png",
+            "desc": "A robust multi-tenant SaaS Point of Sale (POS) specifically built for laundry businesses. It streamlines operations with real-time order tracking, automated customer notifications, and comprehensive financial reporting. The system uses a highly scalable database architecture to handle multiple business branches seamlessly within a single integrated platform.",
             "tags": [
                 "PHP",
-                "CodeIgniter 3",
-                "Bootstrap",
-                "MySQL",
+                "Laravel",
+                "Vue 3",
+                "Inertia.js",
+                "Tailwind",
+                "PostgreSQL",
+                "Redis",
                 "HTML",
                 "JavaScript"
             ]
