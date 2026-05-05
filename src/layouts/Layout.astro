@@ -18,8 +18,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <!-- Global Metadata -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
 
         <!-- Canonical URL -->
@@ -35,14 +35,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta property="og:url" content={Astro.url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={new URL("/og-image.png", Astro.url)} />
+        <meta property="og:image" content={new URL("/favicon.png", Astro.url)} />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={Astro.url} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={new URL("/og-image.png", Astro.url)} />
+        <meta property="twitter:image" content={new URL("/favicon.png", Astro.url)} />
 
         <slot name="head" />
         <script is:inline>
