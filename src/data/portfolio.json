@@ -88,56 +88,56 @@
         {
           "title": "Wishwash.id",
           "url": "https://app.wishwash.id",
-          "image": "/portofolio/projects/wishwash.png",
+          "image": "/projects/wishwash.png",
           "desc": "SaaS multi-tenant POS for laundry services with efficient database management.",
           "tags": ["PHP", "Laravel", "Vue 3", "Inertia.js", "Tailwind", "PostgreSQL", "Redis", "HTML", "JavaScript"]
         },
         {
           "title": "Edeskel.id",
           "url": "https://edeskel.id",
-          "image": "/portofolio/projects/edeskel.png",
+          "image": "/projects/edeskel.png",
           "desc": "Administrative correspondence management application for villages.",
           "tags": ["PHP", "Laravel", "Vue 3", "Inertia.js", "Tailwind", "MySQL", "HTML", "JavaScript"]
         },        
         {
           "title": "SIMRS BLUD Konawe",
           "url": "#",
-          "image": "/portofolio/projects/simrs.png",
+          "image": "/projects/simrs.png",
           "desc": "Administrative correspondence management application for villages.",
           "tags": ["PHP", "Laravel", "Bootstrap", "PostgreSQL", "HTML", "JavaScript", "BPJS Integration"]
         },        
         {
           "title": "Report Management Application",
           "url": "#",
-          "image": "/portofolio/projects/ortala.png",
+          "image": "/projects/ortala.png",
           "desc": "Report management application is a project from the organization and governance section of the Makassar city government. This application is used to facilitate the creation of several reports such as workload analysis reports, job analysis reports, job evaluation reports, job standard reports, competency standard reports, and making ID cards for all employees within the scope of the Makassar city government.",
           "tags": ["Java", "Swing", "MySQL", "Jasper Reports", "Desktop Application"]
         },    
         {
           "title": "Smart Desa Buhung Bundang",
           "url": "#",
-          "image": "/portofolio/projects/bbundang.png",
+          "image": "/projects/bbundang.png",
           "desc": "Smart Desa Buhung Bundang is a project from PT Global Connection Indonesia to digitize data from the village government of Buhung Bundang, Bontotiro District, Bulukumba Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
           "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
         },
         {
           "title": "Smart Desa Lebang Manai",
           "url": "#",
-          "image": "/portofolio/projects/lmanai.png",
+          "image": "/projects/lmanai.png",
           "desc": "Smart Desa Lebang Manai is a project from PT Global Connection Indonesia to digitize data from the village government of Lebang Manai, Rumbia District, Jeneponto Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
           "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
         },
         {
           "title": "Computer Assisted Test",
           "url": "#",
-          "image": "/portofolio/projects/cat.png",
+          "image": "/projects/cat.png",
           "desc": "Computer Assisted Test is a project from PT Global Connection Indonesia for UPT. assessment, potential and competence of the regional civil service agency of South Sulawesi. This application used to perform official exams and diploma adjustments, transfer examinations, outsourcing selection examinations, etc. This project is a web-based application developed using CodeIgniter framework.",
           "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
         },
         {
           "title": "Accounting Information System",
           "url": "#",
-          "image": "/portofolio/projects/accounting.png",
+          "image": "/projects/accounting.png",
           "desc": "Accounting Information System is a project of PT Global Connection Indonesia for PT Alhikmah Trans. This application was developed to make recording financial reports faster and more efficient.",
           "tags": ["Java", "Swing", "MySQL", "Jasper Reports", "Desktop Application"]
         }    

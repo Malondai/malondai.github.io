@@ -6,7 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
     site: 'https://malondai.github.io', 
-    base: '/portofolio', // Sesuaikan jika ini adalah sub-folder (repository name)
+    base: '/', 
     vite: {
         plugins: [tailwindcss()],
     },
