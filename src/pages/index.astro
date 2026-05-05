@@ -24,7 +24,7 @@ const { profile, experiences, projects } = data;
 
         <!-- Aksen: Grainy Texture Overlay -->
         <div
-            class="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('/noise.svg')]"
+            class="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('/portofolio/noise.svg')]"
         >
         </div>
 
@@ -43,6 +43,26 @@ const { profile, experiences, projects } = data;
                     </section>
                 </main>
             </div>
+        </div>
+    </div>
+
+    <!-- Image Enlarge Modal -->
+    <div
+        id="image-modal"
+        class="fixed inset-0 z-[10000] hidden bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
+    >
+        <button
+            id="close-modal"
+            class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors p-2"
+            aria-label="Close modal"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <div class="max-w-5xl w-full flex flex-col items-center">
+            <img id="modal-image" src="" alt="" class="max-h-[85vh] w-auto rounded-lg shadow-2xl cursor-default" />
+            <p id="modal-caption" class="mt-4 text-slate-200 font-medium text-lg"></p>
         </div>
     </div>
 
@@ -134,9 +154,63 @@ const { profile, experiences, projects } = data;
             });
         };
 
+        // 4. Image Modal
+        const setupImageModal = () => {
+            const modal = document.getElementById("image-modal");
+            const modalImg = document.getElementById("modal-image") as HTMLImageElement;
+            const modalCaption = document.getElementById("modal-caption");
+            const closeBtn = document.getElementById("close-modal");
+
+            if (!modal || !modalImg || !modalCaption || !closeBtn) return;
+
+            // Use event delegation or re-query to ensure we catch all triggers
+            document.addEventListener("click", (e) => {
+                const target = e.target as HTMLElement;
+                if (target && target.classList.contains("project-image-trigger")) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const img = target as HTMLImageElement;
+                    modalImg.src = img.src;
+                    modalCaption.textContent = img.dataset.projectTitle || "";
+                    modal.classList.remove("hidden");
+                    modal.classList.add("flex");
+                    document.body.style.overflow = "hidden"; // Prevent scrolling
+                    
+                    gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+                    gsap.fromTo(modalImg, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, delay: 0.1, ease: "back.out(1.7)" });
+                }
+            });
+
+            const closeModal = () => {
+                gsap.to(modal, { opacity: 0, duration: 0.3, onComplete: () => {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                    document.body.style.overflow = ""; // Restore scrolling
+                }});
+            };
+
+            closeBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                closeModal();
+            });
+            
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) closeModal();
+            });
+            
+            // Close on Escape key
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+                    closeModal();
+                }
+            });
+        };
+
         // Run on initial load
         setupAnimations();
         setupNavHighlight();
         setupSpotlight();
+        setupImageModal();
     </script>
 </Layout>
