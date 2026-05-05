@@ -100,6 +100,13 @@
           "tags": ["PHP", "Laravel", "Vue 3", "Inertia.js", "Tailwind", "MySQL", "HTML", "JavaScript"]
         },        
         {
+          "title": "F8 Makassar.com",
+          "url": "https://f8makassar.com/",
+          "image": "/projects/f8.png",
+          "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
+          "tags": ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL", "HTML", "JavaScript"]
+        },        
+        {
           "title": "SIMRS BLUD Konawe",
           "url": "#",
           "image": "/projects/simrs.png",
