@@ -140,7 +140,7 @@
         },
         {
             "title": "Wishwash.id",
-            "url": "https://app.wishwash.id",
+            "url": "https://wishwash.id",
             "image": "/projects/wishwash.png",
             "desc": "A robust multi-tenant SaaS Point of Sale (POS) specifically built for laundry businesses. It streamlines operations with real-time order tracking, automated customer notifications, and comprehensive financial reporting. The system uses a highly scalable database architecture to handle multiple business branches seamlessly within a single integrated platform.",
             "tags": [
