@@ -109,6 +109,25 @@
     ],
     "projects": [
         {
+            "title": "CRM System",
+            "url": "https://crm-apps.wishwash.id/",
+            "image": "/projects/crm.png",
+            "desc": "A production-deployed Customer Relationship Management (CRM) platform designed to streamline client workflows, sales tracking, and operational automation.",
+            "tags": [
+                "Python",
+                "FastAPI",
+                "Vue.js",
+                "SQLAlchemy",
+                "PostgreSQL",
+                "Tailwind CSS",
+                "DaisyUI",
+                "LangChain",
+                "Gemini AI",
+                "GitHub Actions",
+                "CI/CD"
+              ]
+        },
+        {
             "title": "F8 Makassar.com",
             "url": "https://f8makassar.com/",
             "image": "/projects/f8.png",
