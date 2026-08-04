@@ -114,29 +114,33 @@
             "image": "/projects/crm.png",
             "desc": "A production-deployed Customer Relationship Management (CRM) platform designed to streamline client workflows, sales tracking, and operational automation.",
             "tags": [
+                "Vue 3",
+                "DaisyUI",
+                "Tailwind CSS",
                 "Python",
                 "FastAPI",
-                "Vue.js",
                 "SQLAlchemy",
                 "PostgreSQL",
-                "Tailwind CSS",
-                "DaisyUI",
                 "LangChain",
                 "Gemini AI",
                 "GitHub Actions",
-                "CI/CD"
+                "CI/CD",
+                "Progressiv Web App (PWA)"
               ]
         },
         {
-            "title": "F8 Makassar.com",
-            "url": "https://f8makassar.com/",
-            "image": "/projects/f8.png",
-            "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
+            "title": "Wishwash.id",
+            "url": "https://wishwash.id",
+            "image": "/projects/wishwash.png",
+            "desc": "A robust multi-tenant SaaS Point of Sale (POS) specifically built for laundry businesses. It streamlines operations with real-time order tracking, automated customer notifications, and comprehensive financial reporting. The system uses a highly scalable database architecture to handle multiple business branches seamlessly within a single integrated platform.",
             "tags": [
                 "PHP",
-                "CodeIgniter 3",
-                "Bootstrap",
-                "MySQL",
+                "Laravel",
+                "Vue 3",
+                "Inertia.js",
+                "Tailwind",
+                "PostgreSQL",
+                "Redis",
                 "HTML",
                 "JavaScript"
             ]
@@ -158,18 +162,15 @@
             ]
         },
         {
-            "title": "Wishwash.id",
-            "url": "https://wishwash.id",
-            "image": "/projects/wishwash.png",
-            "desc": "A robust multi-tenant SaaS Point of Sale (POS) specifically built for laundry businesses. It streamlines operations with real-time order tracking, automated customer notifications, and comprehensive financial reporting. The system uses a highly scalable database architecture to handle multiple business branches seamlessly within a single integrated platform.",
+            "title": "F8 Makassar.com",
+            "url": "https://f8makassar.com/",
+            "image": "/projects/f8.png",
+            "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
             "tags": [
                 "PHP",
-                "Laravel",
-                "Vue 3",
-                "Inertia.js",
-                "Tailwind",
-                "PostgreSQL",
-                "Redis",
+                "CodeIgniter 3",
+                "Bootstrap",
+                "MySQL",
                 "HTML",
                 "JavaScript"
             ]
