@@ -1,25 +1,313 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: night, light;
-}
 
 @theme {
-    --color-primary: #6366f1;
-    --color-secondary: #2dd4bf;
+    --color-editorial-blue: #0A3C9F;
+    --color-editorial-blue-dark: #072D7A;
+    --color-editorial-cream: #F4EFE6;
+    --color-editorial-sand: #D4C3B0;
+    --color-editorial-tan: #C5B29C;
+    --color-editorial-line: #CFC6B8;
+    --color-editorial-ink: #2A2E35;
+
+    --font-display: "Anton", Impact, "Arial Black", sans-serif;
+    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: "Cormorant Garamond", Georgia, serif;
+    --font-script: "Oooh Baby", cursive;
 }
 
 /* Custom Selection */
 ::selection {
-    background: #6366f1;
-    color: white;
+    background: #0A3C9F;
+    color: #F4EFE6;
+}
+
+/* Vertical Sidebar Writing Mode */
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+/* Subtle Fluted Glass / Ribbed Texture */
+.fluted-texture {
+    background-image: repeating-linear-gradient(
+        90deg,
+        #EFE8DC 0px,
+        #EFE8DC 7px,
+        #DFD5C5 7px,
+        #DFD5C5 9px,
+        #F7F3EB 9px,
+        #F7F3EB 11px
+    );
 }
 
 @layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+/* Smooth Editorial Accordion & Timeline Animations */
+.exp-accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+    opacity: 0;
+}
+
+.exp-accordion-item {
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.35s ease;
+}
+
+.exp-accordion-item:hover {
+    transform: translateX(4px);
+}
+
+.exp-accordion-item[data-open="true"] {
+    transform: translateX(4px);
+}
+
+.exp-accordion-item[data-open="true"] .exp-accordion-body {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.exp-accordion-item[data-open="true"] .exp-accordion-chevron {
+    transform: rotate(180deg);
+}
+
+.exp-detail-inner {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.08s, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
+}
+
+.exp-accordion-item[data-open="true"] .exp-detail-inner {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes expCardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expRailDraw {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.exp-rail-base {
+    transform-origin: top;
+}
+
+.exp-rail-base.is-animating {
+    animation: expRailDraw 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.exp-rail-active {
+    transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.exp-card-animate {
+    opacity: 0;
+    animation: expCardEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.exp-node {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.3s ease;
+}
+
+.exp-accordion-item:hover .exp-node,
+.exp-accordion-item[data-open="true"] .exp-node {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 4px #F4EFE6, 0 0 0 6px rgba(10, 60, 159, 0.16);
+}
+
+/* Interactive My Process Wheel & Step Animations */
+.process-wheel-segment {
+    cursor: pointer;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, filter 0.35s ease;
+    opacity: 0.78;
+}
+
+.process-wheel-segment:hover,
+.process-wheel-segment[data-active="true"] {
+    opacity: 1;
+    filter: drop-shadow(0 6px 12px rgba(10, 60, 159, 0.16));
+}
+
+/* Subtle outward radial pop per quadrant when active */
+.process-wheel-segment[data-step="0"][data-active="true"] {
+    transform: translate(-5px, -5px) scale(1.03);
+}
+.process-wheel-segment[data-step="1"][data-active="true"] {
+    transform: translate(5px, -5px) scale(1.03);
+}
+.process-wheel-segment[data-step="2"][data-active="true"] {
+    transform: translate(5px, 5px) scale(1.03);
+}
+.process-wheel-segment[data-step="3"][data-active="true"] {
+    transform: translate(-5px, 5px) scale(1.03);
+}
+
+.process-starburst {
+    transform-origin: 150px 150px;
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-step-item {
+    position: relative;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.68;
+    border-left: 2px solid transparent;
+}
+
+.process-step-item:hover {
+    opacity: 0.95;
+}
+
+.process-step-item[data-active="true"] {
+    opacity: 1;
+    transform: translateX(6px);
+    background-color: rgba(239, 232, 220, 0.72);
+    border-left-color: #0A3C9F;
+}
+
+@keyframes processProgressArc {
+    from {
+        stroke-dashoffset: 314;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.process-progress-ring.is-running {
+    animation: processProgressArc 3.6s linear infinite;
+}
+
+/* Smooth Archive Drawer (View All Projects) Expand & Collapse */
+.archive-drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.48s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+}
+
+.archive-drawer[data-open="true"] {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+@keyframes archiveCardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.archive-card-item {
+    opacity: 0;
+}
+
+.archive-drawer[data-open="true"] .archive-card-item {
+    animation: archiveCardReveal 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Smooth Editorial Modal Open & Close Transitions */
+.editorial-modal {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.editorial-modal[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.editorial-modal-panel {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease;
+}
+
+.editorial-modal[data-open="true"] .editorial-modal-panel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.modal-image-reveal {
+    transform: scale(1.03);
+    opacity: 0.75;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.05s, opacity 0.35s ease 0.05s;
+}
+
+.editorial-modal[data-open="true"] .modal-image-reveal {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@keyframes modalTagPop {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-tag-animate {
+    opacity: 0;
+    animation: modalTagPop 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .process-wheel-segment,
+    .process-starburst,
+    .process-step-item,
+    .exp-accordion-item,
+    .exp-detail-inner,
+    .exp-rail-active,
+    .exp-node,
+    .archive-drawer,
+    .editorial-modal,
+    .editorial-modal-panel,
+    .modal-image-reveal {
+        transition: none;
+        transform: none !important;
+    }
+    .process-progress-ring.is-running,
+    .exp-rail-base.is-animating,
+    .exp-card-animate,
+    .archive-card-item,
+    .modal-tag-animate {
+        animation: none;
+        opacity: 1;
+    }
 }

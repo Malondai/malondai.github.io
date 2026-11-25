@@ -1,65 +1,71 @@
 ---
 interface Props {
-    title?: string;
-    description?: string;
+  title?: string;
+  description?: string;
 }
 
-const { 
-    title = "Muhammad Mahatir | Fullstack Developer",
-    description = "Software Engineer with expertise in Laravel, Vue, and SaaS multi-tenant systems. Bridging the gap between technical logic and real-world impact."
+const {
+  title = "Muhammad Mahatir | Fullstack Developer — Portfolio",
+  description = "Software Engineer specializing in Full-Stack Web Development, Laravel, Vue, and SaaS multi-tenant architectures. Bridging technical logic and real-world impact.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="id" class="scroll-smooth" data-theme="night">
-    <head>
-        <!-- Global Metadata -->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <meta name="generator" content={Astro.generator} />
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/athir-new image.jpeg" />
+    <link rel="apple-touch-icon" href="/athir-new image.jpeg" />
+    <meta name="generator" content={Astro.generator} />
 
-        <!-- Canonical URL -->
-        <link rel="canonical" href={canonicalURL} />
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
 
-        <!-- Primary Meta Tags -->
-        <title>{title}</title>
-        <meta name="title" content={title} />
-        <meta name="description" content={description} />
+    <!-- Google Fonts for Editorial Design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Oooh+Baby&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={new URL("/favicon.png", Astro.url)} />
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
 
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={Astro.url} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={new URL("/favicon.png", Astro.url)} />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL("/favicon.png", Astro.url)} />
 
-        <slot name="head" />
-        <script is:inline>
-            // Force night theme and clear old preferences
-            document.documentElement.setAttribute("data-theme", "night");
-            localStorage.removeItem("theme");
-        </script>
-    </head>
-    <body class="bg-base-100 text-base-content min-h-screen">
-        <slot />
-    </body>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta
+      property="twitter:image"
+      content={new URL("/favicon.png", Astro.url)}
+    />
+
+    <slot name="head" />
+  </head>
+  <body class="bg-[#E5DDD0] text-[#2A2E35] min-h-screen antialiased">
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+  }
 </style>

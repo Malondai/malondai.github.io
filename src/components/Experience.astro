@@ -1,99 +1,461 @@
 ---
-interface Props {
-	experiences: Array<{
-		year: string;
-		role: string;
-		company: string;
-		url?: string;
-		desc: string | string[];
-		tech: string[];
-	}>;
+interface ServiceItem {
+    title: string;
+    subtitle: string;
+    icon: string;
 }
 
-const { experiences } = Astro.props;
+interface ProcessItem {
+    num: string;
+    title: string;
+    desc: string;
+}
+
+interface ExperienceItem {
+    year: string;
+    role: string;
+    company: string;
+    url?: string;
+    desc: string | string[];
+    tech: string[];
+}
+
+interface Props {
+    services: ServiceItem[];
+    process: ProcessItem[];
+    experiences: ExperienceItem[];
+}
+
+const { services, process, experiences } = Astro.props;
 ---
 
-<section id="exp" class="scroll-mt-16 lg:scroll-mt-24">
-	<div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
-		<h2 class="text-sm font-bold uppercase tracking-widest text-slate-200">Experience</h2>
-	</div>
-	<div>
-		<ol class="group/list">
-			{
-				experiences.map((exp) => (
-					<li class="mb-12">
-						<div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-							<div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
-							<header class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label={exp.year}>
-								{exp.year}
-							</header>
-							<div class="z-10 sm:col-span-6">
-								<h3 class="font-medium leading-snug text-slate-200">
-									<div>
-										{exp.url && exp.url !== "#" ? (
-											<a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300  group/link text-base" href={exp.url} target="_blank" rel="noreferrer noopener" aria-label={`${exp.role} at ${exp.company}`}>
-												<span class="absolute -inset-x-4 -inset-y-4 hidden rounded md:-inset-x-6 md:-inset-y-6 lg:block"></span>
-												<span>
-													{exp.role} · <span class="inline-block">{exp.company}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 focus-visible:translate-y-1 focus-visible:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg></span>
-												</span>
-											</a>
-										) : (
-											<div class="text-base font-medium leading-tight text-slate-200">
-												{exp.role} · <span class="inline-block">{exp.company}</span>
-											</div>
-										)}
-									</div>
-								</h3>
-								
-								<div class="mt-2 text-sm leading-normal text-slate-400">
-									{typeof exp.desc === 'string' ? (
-										<p>{exp.desc}</p>
-									) : (
-										<ul class="space-y-2">
-											{exp.desc.map((item) => (
-												<li class="flex gap-2">
-													<span class="text-teal-500/50 mt-1.5 h-1 w-1 shrink-0 rounded-full bg-teal-500" />
-													{item}
-												</li>
-											))}
-										</ul>
-									)}
-								</div>
+<section id="services-process" class="grid grid-cols-1 lg:grid-cols-12 border-b border-[#CFC6B8] bg-[#F4EFE6]">
+    <!-- LEFT COLUMN: SERVICES + EDITORIAL QUOTE (5 cols on lg) -->
+    <div class="lg:col-span-5 px-5 sm:px-10 lg:px-12 py-7 sm:py-10 border-b lg:border-b-0 lg:border-r border-[#CFC6B8] flex flex-col justify-between">
+        <div>
+            <h2 class="text-xs sm:text-base md:text-[17px] font-extrabold tracking-[0.08em] text-[#0A3C9F] uppercase mb-5 sm:mb-6">
+                SERVICES
+            </h2>
 
-								{exp.url && exp.url !== "#" && (
-									<div class="mt-4 flex items-center">
-										<a href={exp.url} target="_blank" rel="noreferrer noopener" class="inline-flex items-center gap-1 text-xs font-medium text-slate-300 hover:text-teal-300 transition-colors z-20">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-3 w-3">
-												<path d="M12.232 4.232a2.5 2.5 0 0 1 3.536 3.536l-1.225 1.224a.75.75 0 0 0 1.061 1.06l1.224-1.224a4 4 0 0 0-5.656-5.656l-3 3a4 4 0 0 0 .225 5.865.75.75 0 0 0 .977-1.138 2.5 2.5 0 0 1-.142-3.667l3-3Z" />
-												<path d="M11.603 7.963a.75.75 0 0 0-.977 1.138 2.5 2.5 0 0 1 .142 3.667l-3 3a2.5 2.5 0 0 1-3.536-3.536l1.225-1.224a.75.75 0 0 0-1.061-1.06l-1.224 1.224a4 4 0 1 0 5.656 5.656l3-3a4 4 0 0 0-.225-5.865Z" />
-											</svg>
-											{exp.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
-										</a>
-									</div>
-								)}
+            <ul class="space-y-4 sm:space-y-5">
+                {
+                    services.map((s) => (
+                        <li class="flex items-center gap-4">
+                            <!-- Royal Blue Circle Icon -->
+                            <div class="w-10 h-10 rounded-full bg-[#0A3C9F] text-[#F4EFE6] flex items-center justify-center shrink-0 shadow-xs">
+                                {s.icon === "web" && (
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M3 9h18" />
+                                        <path d="M9 21V9" />
+                                    </svg>
+                                )}
+                                {s.icon === "architecture" && (
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                        <polyline points="2 17 12 22 22 17" />
+                                        <polyline points="2 12 12 17 22 12" />
+                                    </svg>
+                                )}
+                                {s.icon === "api" && (
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2v4" />
+                                        <path d="M12 18v4" />
+                                        <path d="M4.93 4.93l2.83 2.83" />
+                                        <path d="M16.24 16.24l2.83 2.83" />
+                                        <path d="M2 12h4" />
+                                        <path d="M18 12h4" />
+                                        <circle cx="12" cy="12" r="4" />
+                                    </svg>
+                                )}
+                                {s.icon === "systems" && (
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                                    </svg>
+                                )}
+                            </div>
 
-								<ul class="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
-									{exp.tech.map((skill) => (
-										<li class="mr-1.5 mt-2">
-											<div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-												{skill}
-											</div>
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
-					</li>
-				))
-			}
-		</ol>
+                            <div>
+                                <h3 class="text-xs sm:text-[13px] font-extrabold tracking-[0.08em] text-[#0A3C9F] uppercase">
+                                    {s.title}
+                                </h3>
+                                <p class="text-xs text-[#3A3F47] mt-0.5">
+                                    {s.subtitle}
+                                </p>
+                            </div>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
 
-		<div class="mt-12">
-			<a class="inline-flex items-center font-bold leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="/resume.pdf" target="_blank" rel="noreferrer noopener" aria-label="View Full Résumé">
-				<span>
-					View Full Résumé<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 focus-visible:translate-y-1 focus-visible:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg>
-				</span>
-			</a>
-		</div>
-	</div>
+        <!-- Editorial Serif Quote: "Design with clarity. Build with purpose." -->
+        <div class="mt-7 sm:mt-9 pt-3 sm:pt-4 relative max-w-[260px]">
+            <blockquote class="font-serif text-[#0A3C9F] text-[1.85rem] sm:text-[2.35rem] leading-[1.08] font-normal tracking-[-0.01em]">
+                <span class="block">Design</span>
+                <span class="block">with clarity.</span>
+                <span class="block">Build with</span>
+                <span class="block">purpose.</span>
+            </blockquote>
+            <div class="w-10 h-[2px] bg-[#0A3C9F] ml-auto mr-4 mt-2"></div>
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN: MY PROCESS + WORK EXPERIENCE SWITCHER (7 cols on lg) -->
+    <div class="lg:col-span-7 px-5 sm:px-10 lg:px-12 py-7 sm:py-10 flex flex-col">
+        <!-- Header with subtle switcher between MY PROCESS and EXPERIENCE -->
+        <div class="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 mb-5 sm:mb-6">
+            <div class="flex items-center gap-2.5 sm:gap-4">
+                <button
+                    type="button"
+                    id="tab-process"
+                    class="text-xs sm:text-base md:text-[17px] font-extrabold tracking-[0.08em] text-[#0A3C9F] uppercase cursor-pointer border-b-2 border-[#0A3C9F] pb-0.5 transition-all"
+                >
+                    MY PROCESS
+                </button>
+                <span class="text-[#CFC6B8]">|</span>
+                <button
+                    type="button"
+                    id="tab-experience"
+                    class="text-xs sm:text-sm font-bold tracking-[0.08em] text-[#0A3C9F]/55 hover:text-[#0A3C9F] uppercase cursor-pointer pb-0.5 border-b-2 border-transparent transition-all"
+                >
+                    EXPERIENCE ({experiences.length})
+                </button>
+            </div>
+
+            <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[10.5px] sm:text-[11px] font-bold tracking-[0.1em] sm:tracking-[0.12em] text-[#0A3C9F] uppercase hover:underline underline-offset-4 inline-flex items-center gap-1"
+            >
+                <span>RÉSUMÉ PDF</span>
+                <span>↗</span>
+            </a>
+        </div>
+
+        <!-- PANEL 1: MY PROCESS (Interactive Synchronized List + Animated Chevron Wheel) -->
+        <div id="panel-process" class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center pt-1">
+            <!-- Process 01 - 04 Interactive List -->
+            <div class="sm:col-span-6 space-y-2 sm:space-y-2.5">
+                {
+                    process.map((step, idx) => (
+                        <button
+                            type="button"
+                            class="process-step-item w-full text-left flex items-start gap-3.5 sm:gap-4 px-3 py-2.5 rounded-r-lg cursor-pointer"
+                            data-step={idx}
+                            data-active={idx === 0 ? "true" : "false"}
+                        >
+                            <span class="font-serif text-[#0A3C9F] text-2xl sm:text-[30px] leading-none font-normal w-7 sm:w-8 shrink-0">
+                                {step.num}
+                            </span>
+                            <div>
+                                <h3 class="text-xs sm:text-[13px] font-extrabold tracking-[0.08em] text-[#0A3C9F] uppercase">
+                                    {step.title}
+                                </h3>
+                                <p class="text-xs text-[#3A3F47] leading-[1.55] mt-0.5 sm:max-w-[230px]">
+                                    {step.desc}
+                                </p>
+                            </div>
+                        </button>
+                    ))
+                }
+            </div>
+
+            <!-- 4-Segment Circular Chevron Process Wheel Diagram (Interactive + Clockwise Animated) -->
+            <div class="sm:col-span-6 flex flex-col items-center justify-center pt-2 sm:pt-0">
+                <div id="process-wheel-container" class="relative w-56 h-56 sm:w-64 sm:h-64 xl:w-[290px] xl:h-[290px] select-none">
+                    <svg viewBox="0 0 300 300" class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
+                        <!--
+                            Clockwise chevron flow around center (150, 150):
+                            0: Top-Left (01 DISCOVER — Magnifying Glass, Royal Blue)
+                            1: Top-Right (02 DEFINE — Architecture Hierarchy Tree, Warm Sand)
+                            2: Bottom-Right (03 DEVELOP — Pen/Code Nib, Royal Blue)
+                            3: Bottom-Left (04 DELIVER — Checkmark Circle, Warm Sand)
+                        -->
+
+                        <!-- Step 0: Top-Left Segment (01 DISCOVER) -->
+                        <g class="process-wheel-segment" data-step="0" data-active="true" role="button" tabindex="0" aria-label="01 Discover">
+                            <path
+                                d="M 21 138 A 130 130 0 0 1 138 21 L 154 58 L 138 95 A 56 56 0 0 0 95 138 L 58 122 Z"
+                                fill="#0A3C9F"
+                            />
+                            <g transform="translate(74, 72)" stroke="#F4EFE6" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="17" y1="17" x2="24" y2="24" />
+                            </g>
+                        </g>
+
+                        <!-- Step 1: Top-Right Segment (02 DEFINE) -->
+                        <g class="process-wheel-segment" data-step="1" data-active="false" role="button" tabindex="0" aria-label="02 Define">
+                            <path
+                                d="M 146 21 A 130 130 0 0 1 279 138 L 242 154 L 205 138 A 56 56 0 0 0 146 95 L 162 58 Z"
+                                fill="#CDBBA7"
+                            />
+                            <g transform="translate(198, 74)" stroke="#F4EFE6" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="1" width="8" height="6" rx="1" />
+                                <path d="M13 7v6M4 13h18M4 13v4M13 13v4M22 13v4" />
+                                <rect x="1" y="17" width="6" height="5" rx="0.5" />
+                                <rect x="10" y="17" width="6" height="5" rx="0.5" />
+                                <rect x="19" y="17" width="6" height="5" rx="0.5" />
+                            </g>
+                        </g>
+
+                        <!-- Step 2: Bottom-Right Segment (03 DEVELOP) -->
+                        <g class="process-wheel-segment" data-step="2" data-active="false" role="button" tabindex="0" aria-label="03 Develop">
+                            <path
+                                d="M 279 146 A 130 130 0 0 1 162 279 L 146 242 L 162 205 A 56 56 0 0 0 205 146 L 242 162 Z"
+                                fill="#0A3C9F"
+                            />
+                            <g transform="translate(198, 196)" stroke="#F4EFE6" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 3l5 5-13 13-7 2 2-7L18 3z" />
+                                <path d="M14 7l5 5" />
+                            </g>
+                        </g>
+
+                        <!-- Step 3: Bottom-Left Segment (04 DELIVER) -->
+                        <g class="process-wheel-segment" data-step="3" data-active="false" role="button" tabindex="0" aria-label="04 Deliver">
+                            <path
+                                d="M 154 279 A 130 130 0 0 1 21 146 L 58 130 L 95 146 A 56 56 0 0 0 154 205 L 138 242 Z"
+                                fill="#CDBBA7"
+                            />
+                            <g transform="translate(76, 198)" stroke="#F4EFE6" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="13" cy="13" r="10" />
+                                <polyline points="8.5 13.5 11.5 16.5 17.5 10.5" />
+                            </g>
+                        </g>
+
+                        <!-- Center Cream Circle -->
+                        <circle cx="150" cy="150" r="53" fill="#F4EFE6" />
+
+                        <!-- Subtle Orbiting Progress Ring around Center Hub -->
+                        <circle
+                            cx="150"
+                            cy="150"
+                            r="50"
+                            fill="none"
+                            stroke="#CFC6B8"
+                            stroke-width="1"
+                            stroke-opacity="0.55"
+                        />
+                        <circle
+                            id="process-progress-ring"
+                            class="process-progress-ring is-running"
+                            cx="150"
+                            cy="150"
+                            r="50"
+                            fill="none"
+                            stroke="#0A3C9F"
+                            stroke-width="1.6"
+                            stroke-dasharray="314"
+                            stroke-dashoffset="314"
+                            stroke-linecap="round"
+                            transform="rotate(-90 150 150)"
+                        />
+
+                        <!-- Center 8-Point Starburst Icon (Rotates 45deg smoothly on each step transition) -->
+                        <g id="process-starburst" class="process-starburst" stroke="#0A3C9F" stroke-width="1.6" stroke-linecap="round">
+                            <line x1="150" y1="126" x2="150" y2="174" />
+                            <line x1="126" y1="150" x2="174" y2="150" />
+                            <line x1="135" y1="135" x2="165" y2="165" />
+                            <line x1="165" y1="135" x2="135" y2="165" />
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Minimal Active Step Readout Pill Below Wheel -->
+                <div class="mt-3 flex items-center gap-2 text-[10px] font-bold tracking-[0.16em] uppercase text-[#0A3C9F]/75">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#0A3C9F] animate-pulse"></span>
+                    <span id="process-active-label">01 · DISCOVER</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 2: INTERACTIVE EDITORIAL TIMELINE ACCORDION + CAREER STATS -->
+        <div id="panel-experience" class="hidden pt-1">
+            <!-- Mini Editorial Career Stats Strip (Count-up on tab open) -->
+            <div class="grid grid-cols-3 border border-[#CFC6B8] rounded-lg bg-[#EFE8DC]/75 divide-x divide-[#CFC6B8] mb-5">
+                <div class="px-1.5 sm:px-3 py-2.5 text-center">
+                    <span
+                        class="exp-stat-value block font-serif text-xl sm:text-2xl leading-none text-[#0A3C9F] font-semibold"
+                        data-target="10"
+                        data-suffix="+"
+                    >
+                        10+
+                    </span>
+                    <span class="block text-[8.5px] sm:text-[9.5px] font-bold tracking-[0.08em] sm:tracking-[0.14em] text-[#3A3F47] uppercase mt-1">
+                        Years Exp
+                    </span>
+                </div>
+                <div class="px-1.5 sm:px-3 py-2.5 text-center">
+                    <span
+                        class="exp-stat-value block font-serif text-xl sm:text-2xl leading-none text-[#0A3C9F] font-semibold"
+                        data-target={experiences.length}
+                        data-pad="2"
+                    >
+                        0{experiences.length}
+                    </span>
+                    <span class="block text-[8.5px] sm:text-[9.5px] font-bold tracking-[0.08em] sm:tracking-[0.14em] text-[#3A3F47] uppercase mt-1">
+                        Roles &amp; Clients
+                    </span>
+                </div>
+                <div class="px-1.5 sm:px-3 py-2.5 text-center">
+                    <span
+                        class="exp-stat-value block font-serif text-xl sm:text-2xl leading-none text-[#0A3C9F] font-semibold"
+                        data-target="10"
+                        data-suffix="+"
+                    >
+                        10+
+                    </span>
+                    <span class="block text-[8.5px] sm:text-[9.5px] font-bold tracking-[0.08em] sm:tracking-[0.14em] text-[#3A3F47] uppercase mt-1">
+                        Systems Shipped
+                    </span>
+                </div>
+            </div>
+
+            <!-- Vertical Timeline Accordion (All collapsed cleanly by default) -->
+            <div id="exp-timeline-list" class="relative pl-7 sm:pl-8 space-y-2.5">
+                <!-- Continuous Base Hairline Rail -->
+                <div
+                    id="exp-rail-base"
+                    class="exp-rail-base pointer-events-none absolute left-[10px] sm:left-[11px] top-4 bottom-4 w-px bg-[#CFC6B8]"
+                    aria-hidden="true"
+                ></div>
+
+                <!-- Dynamic Royal Blue Active Progress Rail (glides to hovered/opened milestone) -->
+                <div
+                    id="exp-rail-active"
+                    class="exp-rail-active pointer-events-none absolute left-[9.5px] sm:left-[10.5px] top-4 w-[2px] bg-[#0A3C9F] rounded-full opacity-0"
+                    style="height: 0px;"
+                    aria-hidden="true"
+                ></div>
+
+                {
+                    experiences.map((exp, idx) => {
+                        const isFirst = idx === 0;
+                        const num = String(idx + 1).padStart(2, "0");
+                        const bullets = Array.isArray(exp.desc) ? exp.desc : [exp.desc];
+                        const cleanDomain =
+                            exp.url && exp.url !== "#"
+                                ? exp.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")
+                                : "";
+
+                        return (
+                            <div
+                                class="exp-accordion-item group relative rounded-lg border bg-[#F4EFE6] border-[#CFC6B8]/80 hover:border-[#0A3C9F]/35 hover:bg-[#EFE8DC]/50"
+                                data-open="false"
+                                data-index={idx}
+                                style={`animation-delay: ${idx * 70}ms;`}
+                            >
+                                <!-- Numbered Node on Timeline Rail -->
+                                <span
+                                    class="exp-node absolute -left-7 sm:-left-8 top-3.5 w-[21px] h-[21px] sm:w-[23px] sm:h-[23px] rounded-full flex items-center justify-center font-serif text-[10.5px] sm:text-[11px] font-semibold bg-[#F4EFE6] text-[#0A3C9F] border border-[#0A3C9F]/45 ring-4 ring-[#F4EFE6]"
+                                >
+                                    {num}
+                                </span>
+
+                                <!-- Clickable Accordion Header -->
+                                <button
+                                    type="button"
+                                    class="exp-accordion-trigger w-full text-left px-3 sm:px-4 py-3 flex items-center justify-between gap-2.5 sm:gap-3 cursor-pointer"
+                                    aria-expanded="false"
+                                >
+                                    <div class="min-w-0 flex-1">
+                                        <!-- Consistent Period Row -->
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <span class="text-[10px] font-bold tracking-[0.12em] text-[#0A3C9F]/75 uppercase">
+                                                {exp.year}
+                                            </span>
+                                            {isFirst && (
+                                                <span class="text-[9px] font-extrabold tracking-[0.14em] uppercase px-1.5 py-0.5 rounded bg-[#0A3C9F] text-[#F4EFE6]">
+                                                    Latest
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        <!-- Role & Company Title -->
+                                        <div class="mt-0.5 flex flex-wrap items-baseline gap-x-1.5">
+                                            <span class="text-xs sm:text-[13px] font-extrabold tracking-[0.05em] text-[#0A3C9F] uppercase">
+                                                {exp.role}
+                                            </span>
+                                            <span class="text-[#0A3C9F]/40 text-xs">·</span>
+                                            <span class="text-xs sm:text-[13px] font-semibold text-[#2A2E35]">
+                                                {exp.company}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Expand / Collapse Chevron Indicator -->
+                                    <span class="w-6 h-6 rounded-full border border-[#CFC6B8] group-hover:border-[#0A3C9F]/50 flex items-center justify-center shrink-0 text-[#0A3C9F] transition-colors">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="exp-accordion-chevron w-3.5 h-3.5 transition-transform duration-300"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2.2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </span>
+                                </button>
+
+                                <!-- Collapsible Detail Content -->
+                                <div class="exp-accordion-body">
+                                    <div class="overflow-hidden">
+                                        <div class="exp-detail-inner px-4 pb-4 pt-2 border-t border-[#CFC6B8]/60 space-y-3">
+                                            <!-- Full Achievements / Responsibilities List -->
+                                            <ul class="space-y-1.5">
+                                                {bullets.map((line) => (
+                                                    <li class="flex items-start gap-2 text-xs text-[#2A2E35]/90 leading-[1.55]">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-[#0A3C9F]/70 mt-[6px] shrink-0"></span>
+                                                        <span>{line}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+
+                                            <!-- Full Tech Stack Tags -->
+                                            <div class="flex flex-wrap gap-1.5 pt-0.5">
+                                                {exp.tech.map((t) => (
+                                                    <span class="text-[9.5px] font-bold tracking-[0.06em] uppercase px-2 py-0.5 rounded bg-[#F4EFE6] border border-[#0A3C9F]/20 text-[#0A3C9F]">
+                                                        {t}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            <!-- Company Link if Available -->
+                                            {cleanDomain && (
+                                                <div class="pt-1">
+                                                    <a
+                                                        href={exp.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="inline-flex items-center gap-1 text-[11px] font-bold tracking-[0.08em] uppercase text-[#0A3C9F] hover:underline underline-offset-4"
+                                                    >
+                                                        <span>Visit {cleanDomain}</span>
+                                                        <span>↗</span>
+                                                    </a>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+
+            <!-- Subtle Helper Hint Below Timeline -->
+            <div class="mt-3.5 flex items-center justify-end gap-1.5 text-[10px] font-semibold tracking-[0.12em] uppercase text-[#0A3C9F]/60">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0A3C9F]/60 animate-pulse"></span>
+                <span>Select any milestone to inspect details</span>
+            </div>
+        </div>
+    </div>
 </section>

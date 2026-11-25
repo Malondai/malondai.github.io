@@ -1,15 +1,71 @@
 {
     "profile": {
         "name": "Muhammad Mahatir",
-        "avatar": "/athir.png",
-        "role": "Fullstack Developer",
+        "shortName": "M. MAHATIR",
+        "brandSub": "SOFTWARE",
+        "monogram": "MM",
+        "avatar": "/athir-hero-v2.png",
+        "avatarFallback": "/athir-new image.jpeg",
+        "role": "FULLSTACK DEVELOPER",
+        "shortBio": "I engineer digital experiences that are functional, scalable and human-centered. Specialized in Full-Stack Web & SaaS architecture.",
         "bio": "I’m a software engineer who loves turning complex problems into simple, digital tools. My journey started back in 2016 building desktop apps for accounting and government reporting, which eventually led me to the web. During my time at Ejen2u, I specialized in the SaaS multi-tenant architecture—an expertise I’ve since poured into my own projects like wishwash.id and Edeskel. Whether it's helping villages go digital or streamlining hospital management, I’m most at home when I’m bridging the gap between technology and real-world impact.",
+        "email": "atir417@gmail.com",
+        "website": "malondai.github.io",
+        "location": "Makassar, Indonesia",
+        "phone": "+62 822-9069-0949",
+        "sidebarTop": "CRAFTING DIGITAL EXPERIENCES",
+        "sidebarLocation": "BASED IN MAKASSAR, WORKING WORLDWIDE",
+        "sidebarAvailability": "AVAILABLE FOR FREELANCE & FULL-TIME",
         "socials": {
             "github": "https://github.com/malondai",
             "linkedin": "https://linkedin.com/in/muhammad-mahatir-b8a9251a4",
             "instagram": "https://instagram.com/malondai"
         }
     },
+    "services": [
+        {
+            "title": "FULL-STACK DEVELOPMENT",
+            "subtitle": "Websites & Enterprise Apps",
+            "icon": "web"
+        },
+        {
+            "title": "SAAS ARCHITECTURE",
+            "subtitle": "Multi-Tenant & Cloud Systems",
+            "icon": "architecture"
+        },
+        {
+            "title": "BACKEND & AI SYSTEMS",
+            "subtitle": "Laravel, FastAPI & Integrations",
+            "icon": "api"
+        },
+        {
+            "title": "FRONTEND ENGINEERING",
+            "subtitle": "Vue, React & Design Systems",
+            "icon": "systems"
+        }
+    ],
+    "process": [
+        {
+            "num": "01",
+            "title": "DISCOVER",
+            "desc": "Understanding your goals, audience and challenges."
+        },
+        {
+            "num": "02",
+            "title": "DEFINE",
+            "desc": "Architecture, user flows and database modeling."
+        },
+        {
+            "num": "03",
+            "title": "DEVELOP",
+            "desc": "Full-stack code, UI systems and API integrations."
+        },
+        {
+            "num": "04",
+            "title": "DELIVER",
+            "desc": "Polished deployment, testing and ongoing support."
+        }
+    ],
     "experiences": [
         {
             "year": "June 2022 — March 2026",
@@ -54,7 +110,7 @@
         {
             "year": "April 2021 — March 2022",
             "role": "Freelance Developer",
-            "company": "CV. Techno Daeng ",
+            "company": "CV. Techno Daeng",
             "url": "#",
             "desc": [
                 "Develop a Web-Based Information System for Regional Public Service Agency Hospital on Kab. Konawe."
@@ -72,7 +128,7 @@
         {
             "year": "April 2018 — December 2018",
             "role": "Freelance Developer",
-            "company": "ORTALA Makassar City Goverment",
+            "company": "ORTALA Makassar City Government",
             "url": "#",
             "desc": [
                 "Develop Desktop Based Report Management Application for Sections Organisasi dan Tata Laksana Makassar city government."
@@ -109,29 +165,13 @@
     ],
     "projects": [
         {
-            "title": "CRM System",
-            "url": "https://crm-apps.wishwash.id/",
-            "image": "/projects/crm.png",
-            "desc": "A production-deployed Customer Relationship Management (CRM) platform designed to streamline client workflows, sales tracking, and operational automation.",
-            "tags": [
-                "Vue 3",
-                "DaisyUI",
-                "Tailwind CSS",
-                "Python",
-                "FastAPI",
-                "SQLAlchemy",
-                "PostgreSQL",
-                "LangChain",
-                "Gemini AI",
-                "GitHub Actions",
-                "CI/CD",
-                "Progressiv Web App (PWA)"
-              ]
-        },
-        {
-            "title": "Wishwash.id",
+            "title": "WISHWASH.ID",
+            "category": "MULTI-TENANT SAAS WEB APP",
+            "shortDesc": "Multi-outlet laundry POS platform that makes order tracking effortless.",
             "url": "https://wishwash.id",
+            "mockup": "/projects/wishwash-mockup.png",
             "image": "/projects/wishwash.png",
+            "featured": true,
             "desc": "A robust multi-tenant SaaS Point of Sale (POS) specifically built for laundry businesses. It streamlines operations with real-time order tracking, automated customer notifications, and comprehensive financial reporting. The system uses a highly scalable database architecture to handle multiple business branches seamlessly within a single integrated platform.",
             "tags": [
                 "PHP",
@@ -146,9 +186,13 @@
             ]
         },
         {
-            "title": "Edeskel.id",
+            "title": "EDESKEL.ID",
+            "category": "SMART VILLAGE PLATFORM",
+            "shortDesc": "Digital village governance app automating administration and citizen data.",
             "url": "https://edeskel.id",
+            "mockup": "/projects/edeskel-mockup.png",
             "image": "/projects/edeskel.png",
+            "featured": true,
             "desc": "A dedicated multi-tenant SaaS platform designed to digitize village administration and correspondence. It empowers local governments by automating document generation, managing population data, and providing a centralized hub for village reports. Built to bridge the digital divide, it ensures secure and efficient data management for rural communities.",
             "tags": [
                 "PHP",
@@ -162,9 +206,38 @@
             ]
         },
         {
-            "title": "F8 Makassar.com",
-            "url": "https://f8makassar.com/",
+            "title": "CRM SYSTEM",
+            "category": "DASHBOARD & AI ANALYTICS",
+            "shortDesc": "Analytics dashboard for sales pipelines, data visualization and AI reporting.",
+            "url": "https://crm-apps.wishwash.id/",
+            "mockup": "/projects/crm-mockup.png",
+            "image": "/projects/crm.png",
+            "featured": true,
+            "desc": "A production-deployed Customer Relationship Management (CRM) platform designed to streamline client workflows, sales tracking, and operational automation.",
+            "tags": [
+                "Vue 3",
+                "DaisyUI",
+                "Tailwind CSS",
+                "Python",
+                "FastAPI",
+                "SQLAlchemy",
+                "PostgreSQL",
+                "LangChain",
+                "Gemini AI",
+                "GitHub Actions",
+                "CI/CD",
+                "PWA"
+            ]
+        },
+        {
+            "title": "F8 MAKASSAR.COM",
+            "category": "FESTIVAL OPERATIONS WEB",
+            "shortDesc": "Event logistics, ticketing and visitor access platform for F8 Makassar.",
+            "url": "#",
+            "demoNote": "Archived Event Platform — Public live demo is unavailable.",
+            "mockup": "/projects/f8-mockup.png",
             "image": "/projects/f8.png",
+            "featured": false,
             "desc": "Developed a comprehensive event operations platform for F8 Makassar, one of Indonesia's largest annual international festivals. The application was designed to streamline festival logistics, enhance visitor engagement, and automate secure access control for the venue.",
             "tags": [
                 "PHP",
@@ -176,10 +249,15 @@
             ]
         },
         {
-            "title": "SIMRS BLUD Konawe",
+            "title": "SIMRS BLUD KONAWE",
+            "category": "HOSPITAL INFORMATION SYSTEM",
+            "shortDesc": "Enterprise medical records and BPJS Health integration for Konawe Hospital.",
             "url": "#",
+            "demoNote": "Private Hospital System — Internal deployment, no public demo.",
+            "mockup": "/projects/simrs-mockup.png",
             "image": "/projects/simrs.png",
-            "desc": "BLUD KONAWE Hospital Information System or SIMRS Blud Konawe is a enterprise software project from CV. Techno Daeng which is used by the Regional Public Service Agency Hospital, Konawe Regency, Southeast Sulawesi. with features such as digital medical records, integration with BPJS Health, patient data, hospital services, and others. This project is a web-based application built using the Laravel framework with a PostgreeSql database.",
+            "featured": false,
+            "desc": "BLUD KONAWE Hospital Information System or SIMRS Blud Konawe is an enterprise software project from CV. Techno Daeng which is used by the Regional Public Service Agency Hospital, Konawe Regency, Southeast Sulawesi, with features such as digital medical records, integration with BPJS Health, patient data, and hospital services.",
             "tags": [
                 "PHP",
                 "Laravel",
@@ -191,10 +269,15 @@
             ]
         },
         {
-            "title": "Report Management Application",
+            "title": "ORTALA REPORT SYSTEM",
+            "category": "GOVERNMENT DESKTOP APP",
+            "shortDesc": "Workload analysis, job evaluation and employee ID system for Makassar City.",
             "url": "#",
+            "demoNote": "Internal Government Desktop App — Restricted access, no public demo.",
+            "mockup": "/projects/ortala-mockup.png",
             "image": "/projects/ortala.png",
-            "desc": "Report management application is a project from the organization and governance section of the Makassar city government. This application is used to facilitate the creation of several reports such as workload analysis reports, job analysis reports, job evaluation reports, job standard reports, competency standard reports, and making ID cards for all employees within the scope of the Makassar city government.",
+            "featured": false,
+            "desc": "Report management application is a project from the organization and governance section of the Makassar city government. Used to facilitate the creation of workload analysis reports, job evaluation reports, competency standards, and employee ID cards.",
             "tags": [
                 "Java",
                 "Swing",
@@ -204,10 +287,15 @@
             ]
         },
         {
-            "title": "Smart Desa Buhung Bundang",
+            "title": "SMART DESA BUHUNG BUNDANG",
+            "category": "E-GOVERNMENT WEB SYSTEM",
+            "shortDesc": "Population data, correspondence and activity reporting for Bulukumba.",
             "url": "#",
+            "demoNote": "Internal Village Government System — Private deployment, no public demo.",
+            "mockup": "/projects/bbundang-mockup.png",
             "image": "/projects/bbundang.png",
-            "desc": "Smart Desa Buhung Bundang is a project from PT Global Connection Indonesia to digitize data from the village government of Buhung Bundang, Bontotiro District, Bulukumba Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
+            "featured": false,
+            "desc": "Smart Desa Buhung Bundang is a project from PT Global Connection Indonesia to digitize data from the village government of Buhung Bundang, Bontotiro District, Bulukumba Regency.",
             "tags": [
                 "PHP",
                 "CodeIgniter 3",
@@ -218,10 +306,15 @@
             ]
         },
         {
-            "title": "Smart Desa Lebang Manai",
+            "title": "SMART DESA LEBANG MANAI",
+            "category": "E-GOVERNMENT WEB SYSTEM",
+            "shortDesc": "Digital village records and public service portal for Jeneponto Regency.",
             "url": "#",
+            "demoNote": "Internal Village Government System — Private deployment, no public demo.",
+            "mockup": "/projects/lmanai-mockup.png",
             "image": "/projects/lmanai.png",
-            "desc": "Smart Desa Lebang Manai is a project from PT Global Connection Indonesia to digitize data from the village government of Lebang Manai, Rumbia District, Jeneponto Regency. With features such as village population data, village activity reports, correspondence, etc. This project is a web-based application developed using CodeIgniter framework.",
+            "featured": false,
+            "desc": "Smart Desa Lebang Manai is a project from PT Global Connection Indonesia to digitize data from the village government of Lebang Manai, Rumbia District, Jeneponto Regency.",
             "tags": [
                 "PHP",
                 "CodeIgniter 3",
@@ -232,10 +325,15 @@
             ]
         },
         {
-            "title": "Computer Assisted Test",
+            "title": "COMPUTER ASSISTED TEST",
+            "category": "ASSESSMENT PLATFORM",
+            "shortDesc": "Civil service competency and examination platform for BKD South Sulawesi.",
             "url": "#",
+            "demoNote": "Internal Civil Service Exam Platform — Private intranet, no public demo.",
+            "mockup": "/projects/cat-mockup.png",
             "image": "/projects/cat.png",
-            "desc": "Computer Assisted Test is a project from PT Global Connection Indonesia for UPT. assessment, potential and competence of the regional civil service agency of South Sulawesi. This application used to perform official exams and diploma adjustments, transfer examinations, outsourcing selection examinations, etc. This project is a web-based application developed using CodeIgniter framework.",
+            "featured": false,
+            "desc": "Computer Assisted Test is a project from PT Global Connection Indonesia for UPT assessment, potential and competence of the regional civil service agency of South Sulawesi.",
             "tags": [
                 "PHP",
                 "CodeIgniter 3",
@@ -246,10 +344,15 @@
             ]
         },
         {
-            "title": "Accounting Information System",
+            "title": "ACCOUNTING SYSTEM",
+            "category": "FINANCIAL DESKTOP APP",
+            "shortDesc": "Automated ledger and financial reporting software for PT Alhikmah Trans.",
             "url": "#",
+            "demoNote": "Private Corporate Desktop App — Internal deployment, no public demo.",
+            "mockup": "/projects/accounting-mockup.png",
             "image": "/projects/accounting.png",
-            "desc": "Accounting Information System is a project of PT Global Connection Indonesia for PT Alhikmah Trans. This application was developed to make recording financial reports faster and more efficient.",
+            "featured": false,
+            "desc": "Accounting Information System is a project of PT Global Connection Indonesia for PT Alhikmah Trans. Developed to make recording financial reports faster and more efficient.",
             "tags": [
                 "Java",
                 "Swing",

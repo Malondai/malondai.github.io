@@ -1,93 +1,203 @@
 ---
+interface Project {
+    title: string;
+    category?: string;
+    shortDesc?: string;
+    desc: string;
+    url?: string;
+    demoNote?: string;
+    mockup?: string;
+    image?: string;
+    featured?: boolean;
+    tags?: string[];
+}
+
 interface Props {
-	projects: Array<{
-		title: string;
-		desc: string;
-		url?: string;
-		image?: string;
-		tags?: string[];
-	}>;
+    projects: Project[];
 }
 
 const { projects } = Astro.props;
+const featuredProjects = projects.slice(0, 3);
+const archiveProjects = projects.slice(3);
 ---
 
-<section id="projects" class="scroll-mt-16 lg:scroll-mt-24">
-	<div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
-		<h2 class="text-sm font-bold uppercase tracking-widest text-slate-200">Projects</h2>
-	</div>
-	<ul class="group/list">
-		{
-			projects.map((p) => (
-				<li class="mb-12">
-					<div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-						<div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
-						<div class="z-10 sm:col-span-2">
-							<div class="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1 overflow-hidden relative z-20">
-								<div class="w-full aspect-video bg-slate-800/50 flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
-									{p.image ? (
-										<img 
-											src={p.image} 
-											alt={`${p.title} thumbnail`} 
-											class="w-full h-full object-cover cursor-pointer project-image-trigger" 
-											data-project-title={p.title}
-											title="Click to enlarge"
-										/>
-									) : (
-										<span class="text-[10px] font-mono font-bold uppercase tracking-widest opacity-30 text-slate-200">Project</span>
-									)}
-								</div>
-							</div>
-						</div>
-						<div class="z-10 sm:col-span-6">
-							<h3 class="font-medium leading-snug text-slate-200">
-								<div>
-									{p.url && p.url !== "#" ? (
-										<a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300  group/link text-base" href={p.url} target="_blank" rel="noreferrer noopener" aria-label={p.title}>
-											<span class="absolute -inset-x-4 -inset-y-4 hidden rounded md:-inset-x-6 md:-inset-y-6 lg:block"></span>
-											<span>
-												{p.title}
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 focus-visible:translate-y-1 focus-visible:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg>
-											</span>
-										</a>
-									) : (
-										<div class="text-base font-medium leading-tight text-slate-200">
-											{p.title}
-										</div>
-									)}
-								</div>
-							</h3>
-							<p class="mt-2 text-sm leading-normal text-slate-400">
-								{p.desc}
-							</p>
-							
-							{p.url && p.url !== "#" && (
-								<div class="mt-4 flex items-center">
-									<a href={p.url} target="_blank" rel="noreferrer noopener" class="inline-flex items-center gap-1 text-xs font-medium text-slate-300 hover:text-teal-300 transition-colors z-20">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-3 w-3">
-											<path d="M12.232 4.232a2.5 2.5 0 0 1 3.536 3.536l-1.225 1.224a.75.75 0 0 0 1.061 1.06l1.224-1.224a4 4 0 0 0-5.656-5.656l-3 3a4 4 0 0 0 .225 5.865.75.75 0 0 0 .977-1.138 2.5 2.5 0 0 1-.142-3.667l3-3Z" />
-											<path d="M11.603 7.963a.75.75 0 0 0-.977 1.138 2.5 2.5 0 0 1 .142 3.667l-3 3a2.5 2.5 0 0 1-3.536-3.536l1.225-1.224a.75.75 0 0 0-1.061-1.06l-1.224 1.224a4 4 0 1 0 5.656 5.656l3-3a4 4 0 0 0-.225-5.865Z" />
-										</svg>
-										{p.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
-									</a>
-								</div>
-							)}
+<section id="projects" class="px-5 sm:px-10 lg:px-14 py-7 sm:py-10 border-b border-[#CFC6B8] bg-[#F4EFE6]">
+    <!-- Section Title Row: SELECTED WORK ------- VIEW ALL PROJECTS -> -->
+    <div class="flex items-center justify-between gap-2 sm:gap-4">
+        <h2 class="text-xs sm:text-base md:text-[17px] font-extrabold tracking-[0.08em] text-[#0A3C9F] uppercase shrink-0">
+            SELECTED WORK
+        </h2>
+        <div class="hidden sm:block h-px bg-[#CFC6B8] flex-1 mx-4 sm:mx-6"></div>
+        <button
+            type="button"
+            id="toggle-all-projects"
+            class="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-[13px] font-bold tracking-[0.08em] sm:tracking-[0.12em] text-[#0A3C9F] uppercase hover:text-[#072D7A] transition-colors shrink-0 cursor-pointer group py-1"
+            aria-expanded="false"
+        >
+            <span id="toggle-projects-label">VIEW ALL PROJECTS</span>
+            <span id="toggle-projects-arrow" class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </button>
+    </div>
 
-							{p.tags && (
-								<ul class="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
-									{p.tags.map((t) => (
-										<li class="mr-1.5 mt-2">
-											<div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-												{t}
-											</div>
-										</li>
-									))}
-								</ul>
-							)}
-						</div>
-					</div>
-				</li>
-			))
-		}
-	</ul>
+    <!-- Top 3 Featured Work Cards (01, 02, 03) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 mt-6 sm:mt-7">
+        {
+            featuredProjects.map((p, index) => {
+                const num = String(index + 1).padStart(2, "0");
+                const displayImg = p.mockup || p.image;
+                return (
+                    <article class="group flex flex-col">
+                        <!-- Thumbnail Frame -->
+                        <div
+                            class="relative aspect-[4/3] w-full rounded-[10px] overflow-hidden bg-[#C7B6A2] shadow-sm border border-[#CFC6B8]/70 cursor-pointer project-card-trigger"
+                            data-project-title={p.title}
+                            data-project-category={p.category || "SOFTWARE ENGINEERING"}
+                            data-project-desc={p.desc}
+                            data-project-url={p.url || "#"}
+                            data-project-mockup={p.mockup || p.image}
+                            data-project-raw={p.image}
+                            data-project-tags={(p.tags || []).join(",")}
+                        >
+                            <!-- Number Label (01, 02, 03) in top-left corner -->
+                            <span class="
+                                absolute top-3 left-3.5 z-20
+                                text-white/95 text-xs sm:text-[13px] font-medium tracking-wider
+                                drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]
+                            ">
+                                {num}
+                            </span>
+
+                            <!-- Inspect / Live Badge (Subtly visible on mobile touch, hover-reveal on desktop) -->
+                            <div class="absolute top-3 right-3 z-20 opacity-90 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="bg-[#0A3C9F]/90 text-[#F4EFE6] text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full backdrop-blur-xs shadow">
+                                    Inspect ↗
+                                </span>
+                            </div>
+
+                            <img
+                                src={displayImg}
+                                alt={p.title}
+                                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                                loading="eager"
+                            />
+                        </div>
+
+                        <!-- Text Info Below Card -->
+                        <div class="mt-3.5 flex-1 flex flex-col">
+                            <div class="flex items-baseline justify-between gap-2">
+                                <h3 class="text-sm sm:text-[15px] font-extrabold tracking-[0.05em] text-[#0A3C9F] uppercase">
+                                    {p.url && p.url !== "#" ? (
+                                        <a
+                                            href={p.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="hover:underline underline-offset-4 inline-flex items-center gap-1"
+                                        >
+                                            <span>{p.title}</span>
+                                        </a>
+                                    ) : (
+                                        <span>{p.title}</span>
+                                    )}
+                                </h3>
+                            </div>
+
+                            <p class="text-[11px] font-semibold tracking-[0.08em] text-[#0A3C9F]/85 uppercase mt-0.5">
+                                {p.category || "WEB APPLICATION"}
+                            </p>
+
+                            <p class="text-xs sm:text-[12.5px] text-[#3A3F47] leading-[1.55] mt-1.5 line-clamp-2">
+                                {p.shortDesc || p.desc}
+                            </p>
+                        </div>
+                    </article>
+                );
+            })
+        }
+    </div>
+
+    <!-- Expandable Archive Grid (Projects 04 - 10) with Smooth Accordion Drawer Transition -->
+    <div
+        id="all-projects-archive"
+        class="archive-drawer"
+        data-open="false"
+        aria-hidden="true"
+    >
+        <div class="overflow-hidden">
+            <div class="mt-8 pt-8 border-t border-[#CFC6B8]/80">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <span class="text-xs font-extrabold tracking-[0.14em] text-[#0A3C9F] uppercase">
+                        COMPLETED WORK ARCHIVE (04 — {String(projects.length).padStart(2, "0")})
+                    </span>
+                    <span class="inline-flex items-start sm:items-center gap-1.5 text-[11px] font-medium text-[#3A3F47]/90 bg-[#EFE8DC] border border-[#CFC6B8] px-3 py-1.5 sm:py-1 rounded-lg sm:rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[#0A3C9F] shrink-0 mt-0.5 sm:mt-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <span>Private / Internal &amp; Archived Systems — Preview screenshots only (No live demo)</span>
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-7 pb-1">
+                    {
+                        archiveProjects.map((p, index) => {
+                            const num = String(index + 4).padStart(2, "0");
+                            const displayImg = p.mockup || p.image;
+                            return (
+                                <article
+                                    class="archive-card-item group flex flex-col"
+                                    style={`animation-delay: ${index * 60}ms;`}
+                                >
+                                    <div
+                                        class="relative aspect-[4/3] w-full rounded-[10px] overflow-hidden bg-[#C7B6A2] shadow-sm border border-[#CFC6B8]/70 cursor-pointer project-card-trigger"
+                                        data-project-title={p.title}
+                                        data-project-category={p.category || "SOFTWARE ENGINEERING"}
+                                        data-project-desc={p.desc}
+                                        data-project-url="#"
+                                        data-project-demo-note={p.demoNote || "Private / Internal System — Live demo is unavailable."}
+                                        data-project-mockup={p.mockup || p.image}
+                                        data-project-raw={p.image}
+                                        data-project-tags={(p.tags || []).join(",")}
+                                    >
+                                        <span class="absolute top-3 left-3.5 z-20 text-white/95 text-xs sm:text-[13px] font-medium tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
+                                            {num}
+                                        </span>
+                                        <div class="absolute top-3 right-3 z-20 opacity-90 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+                                            <span class="bg-[#0A3C9F]/90 text-[#F4EFE6] text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full backdrop-blur-xs shadow">
+                                                Preview ↗
+                                            </span>
+                                        </div>
+                                        <img
+                                            src={displayImg}
+                                            alt={p.title}
+                                            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                                            loading="lazy"
+                                        />
+                                    </div>
+
+                                    <div class="mt-3.5 flex-1 flex flex-col">
+                                        <h3 class="text-sm sm:text-[15px] font-extrabold tracking-[0.05em] text-[#0A3C9F] uppercase">
+                                            {p.title}
+                                        </h3>
+                                        <p class="text-[11px] font-semibold tracking-[0.08em] text-[#0A3C9F]/85 uppercase mt-0.5">
+                                            {p.category || "APPLICATION DEVELOPMENT"}
+                                        </p>
+                                        <p class="text-xs sm:text-[12.5px] text-[#3A3F47] leading-[1.55] mt-1.5 line-clamp-2">
+                                            {p.shortDesc || p.desc}
+                                        </p>
+                                        <p class="mt-2.5 inline-flex items-center gap-1.5 text-[10.5px] font-semibold tracking-[0.04em] text-[#6B5F52] uppercase">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 shrink-0 text-[#0A3C9F]/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                            </svg>
+                                            <span>Private / Internal · No Public Demo</span>
+                                        </p>
+                                    </div>
+                                </article>
+                            );
+                        })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
