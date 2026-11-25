@@ -69,16 +69,34 @@
     "experiences": [
         {
             "year": "June 2022 — March 2026",
-            "role": "Full-stack Developer",
+            "role": "Full-stack & Back End Developer",
             "company": "Ejen2u International Sdn. Bhd",
+            "location": "Selangor, Malaysia (Remote)",
             "url": "https://ejen2u.com/",
-            "desc": [
-                "Leverage Model-View-Controller (MVC) architecture to design and implement end-to-end features for SaaS applications.",
-                "Apply advanced problem-solving skills to identify system bottlenecks and deliver efficient technical solutions.",
-                "Collaborate across the full technology stack to improve user interface responsiveness and backend stability.",
-                "Developed and maintained robust server-side logic using PHP and the Laravel framework.",
-                "Ensured code reliability and software quality through automated testing using PHPUnit."
+            "roles": [
+                {
+                    "title": "Full-stack Developer",
+                    "period": "October 2023 — March 2026",
+                    "desc": [
+                        "Leverage Model-View-Controller (MVC) architecture to design and implement end-to-end features for SaaS applications, ensuring seamless data pipeline integration.",
+                        "Apply advanced problem-solving skills to identify system bottlenecks, optimize complex SQL queries, and deliver efficient technical solutions for large-scale data processing.",
+                        "Collaborate across the full technology stack to improve user interface responsiveness and develop interactive dashboards for business metrics monitoring.",
+                        "Manage complex data flows between frontend components and server-side logic, performing data cleaning and validation to ensure data integrity.",
+                        "Extracted and analyzed user behavioral data and transaction logs to provide actionable insights for product and feature improvements."
+                    ]
+                },
+                {
+                    "title": "Back End Developer",
+                    "period": "June 2022 — September 2023",
+                    "desc": [
+                        "Developed and maintained robust server-side logic using PHP and the Laravel framework, structuring complex databases for efficient data retrieval.",
+                        "Ensured code reliability and software quality through automated testing using PHPUnit.",
+                        "Built and optimized structured HTML components for seamless integration with backend services.",
+                        "Focused on database management, data warehousing concepts, and API development to support scalable application growth and data aggregation."
+                    ]
+                }
             ],
+            "desc": [],
             "tech": [
                 "PHP",
                 "HTML",
@@ -86,6 +104,7 @@
                 "MySQL",
                 "PostgreSQL",
                 "Laravel",
+                "PHPUnit",
                 "React.js",
                 "Vue.js",
                 "REST API",

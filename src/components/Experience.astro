@@ -11,11 +11,19 @@ interface ProcessItem {
     desc: string;
 }
 
+interface ExperienceSubRole {
+    title: string;
+    period: string;
+    desc: string[];
+}
+
 interface ExperienceItem {
     year: string;
     role: string;
     company: string;
+    location?: string;
     url?: string;
+    roles?: ExperienceSubRole[];
     desc: string | string[];
     tech: string[];
 }
@@ -299,7 +307,7 @@ const { services, process, experiences } = Astro.props;
                         0{experiences.length}
                     </span>
                     <span class="block text-[8.5px] sm:text-[9.5px] font-bold tracking-[0.08em] sm:tracking-[0.14em] text-[#3A3F47] uppercase mt-1">
-                        Roles &amp; Clients
+                        Companies &amp; Clients
                     </span>
                 </div>
                 <div class="px-1.5 sm:px-3 py-2.5 text-center">
@@ -365,13 +373,18 @@ const { services, process, experiences } = Astro.props;
                                 >
                                     <div class="min-w-0 flex-1">
                                         <!-- Consistent Period Row -->
-                                        <div class="flex flex-wrap items-center gap-2">
+                                        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
                                             <span class="text-[10px] font-bold tracking-[0.12em] text-[#0A3C9F]/75 uppercase">
                                                 {exp.year}
                                             </span>
                                             {isFirst && (
                                                 <span class="text-[9px] font-extrabold tracking-[0.14em] uppercase px-1.5 py-0.5 rounded bg-[#0A3C9F] text-[#F4EFE6]">
                                                     Latest
+                                                </span>
+                                            )}
+                                            {exp.roles && exp.roles.length > 1 && (
+                                                <span class="text-[9px] font-extrabold tracking-[0.1em] uppercase px-1.5 py-0.5 rounded bg-[#DFD2C0] text-[#0A3C9F]">
+                                                    {exp.roles.length} Roles
                                                 </span>
                                             )}
                                         </div>
@@ -386,6 +399,12 @@ const { services, process, experiences } = Astro.props;
                                                 {exp.company}
                                             </span>
                                         </div>
+
+                                        {exp.location && (
+                                            <span class="block text-[10.5px] text-[#3A3F47]/80 mt-0.5">
+                                                {exp.location}
+                                            </span>
+                                        )}
                                     </div>
 
                                     <!-- Expand / Collapse Chevron Indicator -->
@@ -408,16 +427,54 @@ const { services, process, experiences } = Astro.props;
                                 <!-- Collapsible Detail Content -->
                                 <div class="exp-accordion-body">
                                     <div class="overflow-hidden">
-                                        <div class="exp-detail-inner px-4 pb-4 pt-2 border-t border-[#CFC6B8]/60 space-y-3">
-                                            <!-- Full Achievements / Responsibilities List -->
-                                            <ul class="space-y-1.5">
-                                                {bullets.map((line) => (
-                                                    <li class="flex items-start gap-2 text-xs text-[#2A2E35]/90 leading-[1.55]">
-                                                        <span class="w-1.5 h-1.5 rounded-full bg-[#0A3C9F]/70 mt-[6px] shrink-0"></span>
-                                                        <span>{line}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                        <div class="exp-detail-inner px-3 sm:px-4 pb-4 pt-2.5 border-t border-[#CFC6B8]/60 space-y-3.5">
+                                            {/* Nested Role Progression Sub-Timeline if multiple roles at same company */}
+                                            {exp.roles && exp.roles.length > 0 ? (
+                                                <div class="relative pl-4 space-y-4">
+                                                    <div
+                                                        class="pointer-events-none absolute left-[4.5px] top-2 bottom-2 w-px bg-[#0A3C9F]/25"
+                                                        aria-hidden="true"
+                                                    ></div>
+                                                    {exp.roles.map((sub, rIdx) => (
+                                                        <div class="relative">
+                                                            <span
+                                                                class="absolute -left-4 top-1.5 w-2.5 h-2.5 rounded-full ring-2 ring-[#EFE8DC]"
+                                                                class:list={[
+                                                                    rIdx === 0
+                                                                        ? "bg-[#0A3C9F]"
+                                                                        : "bg-[#F4EFE6] border-2 border-[#0A3C9F]/60",
+                                                                ]}
+                                                                aria-hidden="true"
+                                                            ></span>
+                                                            <div class="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 mb-1.5">
+                                                                <h4 class="text-[11.5px] sm:text-xs font-extrabold tracking-[0.06em] text-[#0A3C9F] uppercase">
+                                                                    {sub.title}
+                                                                </h4>
+                                                                <span class="text-[10px] font-semibold tracking-[0.08em] text-[#3A3F47]/80 uppercase">
+                                                                    {sub.period}
+                                                                </span>
+                                                            </div>
+                                                            <ul class="space-y-1.5">
+                                                                {sub.desc.map((line) => (
+                                                                    <li class="flex items-start gap-2 text-xs text-[#2A2E35]/90 leading-[1.55]">
+                                                                        <span class="w-1 h-1 rounded-full bg-[#0A3C9F]/60 mt-[7px] shrink-0"></span>
+                                                                        <span>{line}</span>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <ul class="space-y-1.5">
+                                                    {bullets.map((line) => (
+                                                        <li class="flex items-start gap-2 text-xs text-[#2A2E35]/90 leading-[1.55]">
+                                                            <span class="w-1.5 h-1.5 rounded-full bg-[#0A3C9F]/70 mt-[6px] shrink-0"></span>
+                                                            <span>{line}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
 
                                             <!-- Full Tech Stack Tags -->
                                             <div class="flex flex-wrap gap-1.5 pt-0.5">
